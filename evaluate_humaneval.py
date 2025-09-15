@@ -62,7 +62,11 @@ def evaluate(system: MultiAgentSystem, system_prompt: str = "You are an expert P
         finally:
             signal.alarm(0)
 
+        print(f"raw completion: {completion}")
+
         code = _extract_code(completion)
+
+        print(f"extracted code: {code}")
         ok = _run_tests(code, tests, entry_point)
         if ok:
             passed += 1
